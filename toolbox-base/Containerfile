@@ -1,0 +1,13 @@
+FROM fedora-toolbox:35
+
+ENV POWERLINE_CONFIG_OVERRIDES='ext.shell={"colorscheme":"toolbox"}'
+
+RUN dnf install -y powerline powerline-fonts ansible && \
+    dnf clean all
+
+RUN wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/oc/latest/linux/oc.tar.gz && \
+    tar xvf oc.tar.gz && \
+    mv oc kubectl /usr/local/bin/ && \
+    rm oc.tar.gz README.md
+
+CMD /bin/bash
