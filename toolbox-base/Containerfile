@@ -1,4 +1,4 @@
-FROM fedora-toolbox:35
+FROM fedora-toolbox:36
 
 ENV POWERLINE_CONFIG_OVERRIDES='ext.shell={"colorscheme":"toolbox"}'
 
@@ -19,10 +19,10 @@ RUN wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/oc/latest/
     rm -f oc.tar.gz README.md
 
 # camel-k client install
-RUN wget https://mirror.openshift.com/pub/openshift-v4/clients/camel-k/1.6.3/camel-k-client-1.6.3-linux-64bit.tar.gz && \
-    tar xvf camel-k-client-1.6.3-linux-64bit.tar.gz --no-same-owner && \
+RUN wget https://mirror.openshift.com/pub/openshift-v4/clients/camel-k/1.6.5/camel-k-client-1.6.5-linux-64bit.tar.gz && \
+    tar xvf camel-k-client-1.6.5-linux-64bit.tar.gz --no-same-owner && \
     mv kamel /usr/local/bin/ && \
-    rm -f kamel.sha512 LICENSE NOTICE camel-k-client-1.6.3-linux-64bit.tar.gz 
+    rm -f kamel.sha512 LICENSE NOTICE camel-k-client-1.6.5-linux-64bit.tar.gz 
 
 # operator-sdk install
 RUN ARCH=$(case $(uname -m) in x86_64) echo -n amd64 ;; aarch64) echo -n arm64 ;; *) echo -n $(uname -m) ;; esac) && \
